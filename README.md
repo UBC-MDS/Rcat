@@ -1,6 +1,6 @@
 # Rcat
 ### Overview
-Exploratory data analysis (EDA) is an approach to investigate and summarize a given data set before any other analyses. `Rcat` is a package that provides necessary functions for EDA, and inspires valuable research questions.
+Exploratory data analysis (EDA) is an approach to investigate and summarize a given data set before any other analyses. `Rcat` is a R package that provides necessary functions for EDA, and inspires valuable research questions.
 
 #### Function description
 Functions designed in this package will focus on several aspects: 
