@@ -1,15 +1,16 @@
 Package: Rcat
-Title: What the Package Does (One Line, Title Case)
+Title: a collection of EDA related functions
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Dora",
+           family = "Qian",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "kumakoq@gmail.com")
+Description: Helps users to deal with missing and suspicious values, find the top correlated features during exploratory data analysis stage.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+Suggests: 
+    testthat
