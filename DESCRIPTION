@@ -7,8 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "kumakoq@gmail.com")
 Description: Helps users to deal with missing and suspicious values, find the top correlated features during exploratory data analysis stage.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
