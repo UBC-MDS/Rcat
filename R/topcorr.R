@@ -1,9 +1,9 @@
 #' Top correlated features
 #'
-#' Create a dataframe with the top k correlated pairs of features
+#' Create a tibble with the top k correlated pairs of features
 #'
-#' @param df , the input tibble
-#' @param k , The number of top correlated features
+#' @param df the input tibble
+#' @param k the number of top correlated features
 #'
 #' @return tibble
 #' @export
