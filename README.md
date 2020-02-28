@@ -1,27 +1,68 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # Rcat
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
 ### Overview
-Exploratory data analysis (EDA) is an approach to investigate and summarize a given data set before any other analyses. `Rcat` is an R package that provides necessary functions for EDA, and inspires valuable research questions.
+
+Exploratory data analysis (EDA) is an approach to investigate and
+summarize a given data set before any other analyses. `Rcat` is an R
+package that provides necessary functions for EDA, and inspires valuable
+research questions.
 
 #### Function description
-Functions designed in this package will focus on several aspects: 
 
-- Uninformative strings:  
-Data frames sometimes include uninformative strings such as strings with only punctuations, or blank strings, which could be noises for the later analysis. This function replaces these strings with `NA` so they can be removed as missing values.
+Functions designed in this package will focus on several aspects:
 
-- Missing values:  
-This function summarizes the missing values in the data frame. It also sets a threshold to drop the related rows or columns with overmuch missing values.
+  - Uninformative strings:  
+    Data frames sometimes include uninformative strings such as strings
+    with only punctuations, or blank strings, which could be noises for
+    the later analysis. This function replaces these strings with `NA`
+    so they can be removed as missing values.
 
-- Erroneous values:  
-Data frames could include erroneous values such as outliers. This function detects and reports all the possible erroneous values.
+  - Missing values:  
+    This function summarizes the missing values in the data frame. It
+    also sets a threshold to drop the related rows or columns with
+    overmuch missing values.
 
-- Feature correlation:  
-This function identifies the features with highest correlations to the target, giving insights to the later analysis of the features.
+  - Erroneous values:  
+    Data frames could include erroneous values such as outliers. This
+    function detects and reports all the possible erroneous values.
+
+  - Feature correlation:  
+    This function identifies the features with highest correlations to
+    the target, giving insights to the later analysis of the features.
 
 #### Alignment with ecosystems
-There are several existing packages in R that implement similar functionality. 
-- [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
-This package generates descriptive statistics and visualisations for data frames. A HTML EDA report is also avaliable.
-- [DataExplorer](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
-This package can analyze and visualize each variable in a data frame. It also includes common data processing methods for wrangling.
-- [inspectdf](https://cran.r-project.org/web/packages/inspectdf/index.html)  
-This package offers columnwise summary, comparison and visualisation of data frames.
+
+There are several existing packages in R that implement similar
+functionality. -
+[SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
+This package generates descriptive statistics and visualisations for
+data frames. A HTML EDA report is also avaliable. -
+[DataExplorer](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
+This package can analyze and visualize each variable in a data frame. It
+also includes common data processing methods for wrangling. -
+[inspectdf](https://cran.r-project.org/web/packages/inspectdf/index.html)  
+This package offers columnwise summary, comparison and visualisation of
+data frames.
+
+## Installation
+
+You can install the released version of Rcat from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("Rcat")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("UBC-MDS/Rcat")
+```
