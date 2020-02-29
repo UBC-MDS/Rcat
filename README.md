@@ -40,16 +40,20 @@ The following 4 functions are included in our package.
 ### How `Rcat` fit in the R ecosystem
 
 There are several existing packages in R that implement similar
-functionality. -
-[SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
-This package generates descriptive statistics and visualisations for
-data frames. A HTML EDA report is also avaliable. -
-[DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html)  
-This package can analyze and visualize each variable in a data frame. It
-also includes common data processing methods for wrangling. -
-[inspectdf](https://cran.r-project.org/web/packages/inspectdf/index.html)  
-This package offers columnwise summary, comparison and visualisation of
-data frames.
+functionality.
+
+  - [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
+    This package generates descriptive statistics and visualisations for
+    data frames. A HTML EDA report is also avaliable.
+
+  - [DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html)  
+    This package can analyze and visualize each variable in a data
+    frame. It also includes common data processing methods for
+    wrangling.
+
+  - [inspectdf](https://cran.r-project.org/web/packages/inspectdf/index.html)  
+    This package offers columnwise summary, comparison and visualisation
+    of data frames.
 
 These packages all provide functions reporting missing values and
 correlations. Only `SmartEDA` has a function that runs univariate
