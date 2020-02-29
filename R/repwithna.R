@@ -9,6 +9,6 @@
 #' @export
 #'
 #' @examples
-#' rep_with_na(df)
-rep_with_na <- function(df) {
+#' repwithna(df)
+repwithna <- function(df) {
 }
