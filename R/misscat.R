@@ -10,5 +10,5 @@
 #'
 #' @examples
 #' missing(df, 0.2)
-missing <- function(df, k) {
+misscat <- function(df, k) {
 }

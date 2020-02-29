@@ -1,7 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<img src="img/r_logo.jpg" width="200" align = "right">
+
 # Rcat
+
+*R package to simplify and ease EDA process*
+
+*Creators: Netanel Barasch, Eithar Elbasheer, Yingping Qian, Hanying
+Zhang*
 
 <!-- badges: start -->
 
