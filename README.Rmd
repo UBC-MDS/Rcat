@@ -36,11 +36,14 @@ The following 4 functions are included in our package.
 There are several existing packages in R that implement similar functionality. 
 - [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
 This package generates descriptive statistics and visualisations for data frames. A HTML EDA report is also avaliable.
-- [DataExplorer](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
+- [DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html)  
 This package can analyze and visualize each variable in a data frame. It also includes common data processing methods for wrangling.
 - [inspectdf](https://cran.r-project.org/web/packages/inspectdf/index.html)  
 This package offers columnwise summary, comparison and visualisation of data frames.
 
+These packages all provide functions reporting missing values and correlations. Only `SmartEDA` has a function that runs univariate outlier analysis. And to deal with missing values, only `DataExplorer` has a function to set all missing values to indicated value.
+
+Thus in R ecosystem, there are many well-defined packages with useful functions for EDA, but there is yet no package containing these different EDA methods. With our package, we hope to incorporate these functions to help the users deal with missing values, outliers and correlations with one simplest way when they are exploring the data set.
 
 ## Installation
 
