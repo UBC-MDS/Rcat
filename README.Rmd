@@ -18,25 +18,21 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-### Overview
-Exploratory data analysis (EDA) is an approach to investigate and summarize a given data set before any other analyses. `Rcat` is an R package that provides necessary functions for EDA, and inspires valuable research questions.
+### Project Overview
+`Rcat` provides a set of convenient functions for Exploratory Data Analysis (EDA). In the early stage of the data science projects, EDA is a critical stage to perform an initial investigation on the dataset and inspire valuable research questions. This packages simplifies the process of detecting and dealing with missing and suspicious values in the dataset, as well as finding the relevant features.
 
-#### Function description
-Functions designed in this package will focus on several aspects: 
+### Functions
+The following 4 functions are included in our package.
 
-- Uninformative strings:  
-Data frames sometimes include uninformative strings such as strings with only punctuations, or blank strings, which could be noises for the later analysis. This function replaces these strings with `NA` so they can be removed as missing values.
+1. `misscat`: This function provides a summary of missing values in the data frame and drops rows or columns if the number of the missing values exceeds the input threshold.
 
-- Missing values:  
-This function summarizes the missing values in the data frame. It also sets a threshold to drop the related rows or columns with overmuch missing values.
+2. `suscat`: Data frames could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user chosen columns.
 
-- Erroneous values:  
-Data frames could include erroneous values such as outliers. This function detects and reports all the possible erroneous values.
+3. `repwithna`: Data frames sometimes include uninformative strings such as strings with only punctuations, or blank strings, which could be noises for the later analysis. This function replaces these strings with `NA` so they can be removed as missing values.
+        
+4. `topcorr`: This function generates a list of top-correlated features in the data frame.
 
-- Feature correlation:  
-This function identifies the features with highest correlations to the target, giving insights to the later analysis of the features.
-
-#### Alignment with ecosystems
+### How `Rcat` fit in the R ecosystem
 There are several existing packages in R that implement similar functionality. 
 - [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)  
 This package generates descriptive statistics and visualisations for data frames. A HTML EDA report is also avaliable.
