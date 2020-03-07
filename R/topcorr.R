@@ -10,9 +10,6 @@
 #'
 #' @examples
 #' topcorr(iris, 1)
-#' |Feature 1|Feature 2|Correlation|
-#' |---|---|---|
-#' |Petal.Width|Petal.Length|0.9628654|
 topcorr <- function(df, k='all') {
         # check the input of df
         if (!is.data.frame(df)) {
@@ -33,7 +30,7 @@ topcorr <- function(df, k='all') {
 
         # check the value of k
         if (k != 'all'){
-                if (k < 0) {
+                if (k <= 0) {
                         stop("The input k should be a positive integer!")
                 } else {
                         if (k > n_pairs) {
@@ -44,9 +41,10 @@ topcorr <- function(df, k='all') {
 
 
         # get the correlation matrix and remove redundant pairs
-        cmatrix <- cor(dfn)
+        cmatrix <- stats::cor(dfn)
         cmatrix[upper.tri(cmatrix, diag=TRUE)] <- NA
-        c_df <- na.omit(reshape::melt(cmatrix))
+        cmatrix_melt <- reshape::melt(cmatrix)
+        c_df <- stats::na.omit(cmatrix_melt)
 
         # sort by absolute values
         c_df_sort <- c_df[order(-abs(c_df$value)),]
@@ -60,6 +58,6 @@ topcorr <- function(df, k='all') {
         if (k == 'all') {
                 return(c_df_sort)
         } else {
-                return(head(c_df_sort, k))
+                return(utils::head(c_df_sort, k))
         }
 }
