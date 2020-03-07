@@ -4,19 +4,19 @@
 \alias{topcorr}
 \title{Top correlated features}
 \usage{
-topcorr(df, k = 5)
+topcorr(df, k = "all")
 }
 \arguments{
-\item{df}{the input tibble}
+\item{df}{data.frame, the input data frame}
 
-\item{k}{the number of top correlated features}
+\item{k}{numeric or character, default at "all", the number of feature pairs to return}
 }
 \value{
-tibble
+data.frame, the sorted correlation data frame
 }
 \description{
-Create a tibble with the top k correlated pairs of features
+Generates a data frame with the top k correlated pairs of features
 }
 \examples{
-topcorr(df, 10)
+topcorr(iris, 1)
 }
