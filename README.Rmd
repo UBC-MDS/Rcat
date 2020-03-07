@@ -68,3 +68,130 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/Rcat")
 ```
+
+## Usage
+
+The examples used below are based on `iris` from R's build in datasets. For demo purpose, we will insert some missing and erroneous values into this dataset. 
+
+``` r
+iris_df <- head(iris, 5)
+iris_df[1, 1:3] <- NA
+iris_df[5, 2] <- NA
+levels(iris_df$Species) <- c(levels(iris_df$Species), "")
+iris_df[3, 5] <- ""
+```
+The example dataframe is shown below:
+
+|Sepal.Length|Sepal.Width|Petal.Length|Petal.Width|Species|
+|---|---|---|---|---|
+|NA |NA |NA |0.2|setosa|
+|4.9|3.0 |1.4 |0.2|setosa|
+|4.7 |3.2 |1.3 |0.2||
+|4.6 |3.1|1.5|0.2|setosa|
+|5.0 |NA|1.4|0.2|setosa|
+
+### 1. misscat
+
+**Arguments**
+
+- `df`, the input data frame (data.frame)
+- `threshold`, ratio of missing values to drop the row (numeric)
+
+**Returns**
+
+- a dataframe after dropping rows (data.frame)
+
+**Examples**
+
+``` r
+library(Rcat)
+misscat(df=iris_df, threshold=0.5)
+```
+The expected output is shown below:
+
+|Sepal.Length|Sepal.Width|Petal.Length|Petal.Width|Species|
+|---|---|---|---|---|
+|4.9|3.0 |1.4 |0.2|setosa|
+|4.7 |3.2 |1.3 |0.2||
+|4.6 |3.1|1.5|0.2|setosa|
+|5.0 |NA|1.4|0.2|setosa|
+
+### 2. suscat
+
+suscat(df, columns, n = 1, num = 'percent')
+
+**Arguments**
+
+- `df`, the input data frame (data.frame)
+- `columns`, a list or array of column indices for which to test for suspected erroneous data (list)
+- `n`, an integer value for amount of suspected values to return
+- `num`, the optional parameter specifies the whether n is a number of rows or percentage
+
+**Returns**
+
+- a dataframe  with key as index of column and values as row indices of suspected erroneous values
+
+**Examples**
+
+``` r
+library(Rcat)
+suscat(df=iris_df)
+```
+
+The expected output is shown below:
+Waiting for the 4th function
+
+
+### 3. repwithna
+
+**Arguments**
+
+- `df`, the input data frame (data.frame)
+
+**Returns**
+
+- a dataframe after replacing uninformative string with NA (data.frame)
+
+**Examples**
+
+``` r
+library(Rcat)
+repwithna(df=iris_df)
+```
+
+The expected output is shown below:
+
+|Sepal.Length|Sepal.Width|Petal.Length|Petal.Width|Species|
+|---|---|---|---|---|
+|NA |NA |NA |0.2|setosa|
+|4.9|3.0 |1.4 |0.2|setosa|
+|4.7 |3.2 |1.3 |0.2|NA|
+|4.6 |3.1|1.5|0.2|setosa|
+|5.0 |NA|1.4|0.2|setosa|
+
+### 4. topcorr
+
+**Arguments**
+
+- `df`, the input data frame (data.frame)
+- `k`, the number of feature pairs to return (intger or string, default: "all")
+
+**Returns**
+
+- a sorted correlation data frame with top k correlated feature pairs (data.frame)
+
+**Examples**
+
+``` r
+library(Rcat)
+topcorr(df=iris, 2)
+```
+
+*Note: Some columns in iris_df have zero standard deviation. We will use the full iris dataset for demostration.*
+
+The expected output is shown below:
+
+|Feature 1|Feature 2|Correlation|
+|---|---|---|
+|Petal.Width|Petal.Length|0.9629|
+|Petal.Length|Sepal.Length|0.8718|
