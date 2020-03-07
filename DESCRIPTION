@@ -17,4 +17,5 @@ Suggests:
 Imports: 
     dplyr,
     stringr,
-    naniar
+    naniar,
+    reshape
