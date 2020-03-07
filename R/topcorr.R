@@ -41,7 +41,7 @@ topcorr <- function(df, k='all') {
 
 
         # get the correlation matrix and remove redundant pairs
-        cmatrix <- stats::cor(dfn)
+        cmatrix <- round(stats::cor(dfn), 4)
         cmatrix[upper.tri(cmatrix, diag=TRUE)] <- NA
         cmatrix_melt <- reshape::melt(cmatrix)
         c_df <- stats::na.omit(cmatrix_melt)
