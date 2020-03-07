@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' repwithna(data.frame("Name" = c("  ", ",.;"), "Age" = c(21,15)), rmvpunc=True)
+#' repwithna(data.frame("Name" = c("  ", ",.;"), "Age" = c(21,15)), rmvpunc=TRUE)
 repwithna <- function(df, rmvpunc=FALSE, format=NULL) {
         # check input
         if (!is.data.frame(df)){
@@ -39,11 +39,11 @@ repwithna <- function(df, rmvpunc=FALSE, format=NULL) {
                 }
         } else {
                 # replace strings that are not in the format as NAs
-                toberep <- format
+                toberep <- paste0('^(?!', format, ').*$')
         }
 
-        df <- dplyr::mutate_all(df, funs(stringr::str_replace(., toberep, "tobereplaced")))
-        df <- naniar::replace_with_na_all(df, condition = ~.x == "tobereplaced")
+        df[sapply(df, function(x) !is.numeric(x))] <- dplyr::mutate_all(df[sapply(df, function(x) !is.numeric(x))], dplyr::funs(stringr::str_replace(., toberep, "NA")))
+        df[sapply(df, function(x) !is.numeric(x))] <- naniar::replace_with_na_all(df[sapply(df, function(x) !is.numeric(x))], condition = ~.x == "NA")
 
         return(df)
 }
