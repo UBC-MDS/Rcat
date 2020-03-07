@@ -26,7 +26,3 @@ misscat <- function(df, threshold) {
         return(df)
 
 }
-
-
-
-
