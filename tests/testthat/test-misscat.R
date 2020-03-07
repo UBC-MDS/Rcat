@@ -1,4 +1,4 @@
-test_that("misscat() drops rows based on threshold of NAs", {
+testthat::test_that("misscat() drops rows based on threshold of NAs", {
         # Creating a testing dataframe
         x <- data.frame(x = c(1, 2, NaN), y = c(NA, 2, NA))
         # testing wrong input df

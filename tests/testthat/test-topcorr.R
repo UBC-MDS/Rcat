@@ -8,41 +8,41 @@ df_output_1 <- data.frame("Feature 1" = c('y', 'z', 'z'),
                           check.names = FALSE)
 
 # test incorrect dataframe type
-test_that("Error is raised for incorrect df type", {
-        expect_error(topcorr(1))
+testthat::test_that("Error is raised for incorrect df type", {
+        testthat::expect_error(topcorr(1))
 })
 
 # test incorrect k type
-test_that("Error is raised for incorrect k type", {
-        expect_error(topcorr(test_df, "d"))
+testthat::test_that("Error is raised for incorrect k type", {
+        testthat::expect_error(topcorr(test_df, "d"))
 })
 
 # test when k is larger than number of feature pairs
-test_that("Error is raised for k larger than number of feature pairs", {
-        expect_error(topcorr(test_df, 3))
+testthat::test_that("Error is raised for k larger than number of feature pairs", {
+        testthat::expect_error(topcorr(test_df, 3))
 })
 
 # test when k is a negative number
-test_that("Error is raised for negative k value", {
-        expect_error(topcorr(test_df, -1))
+testthat::test_that("Error is raised for negative k value", {
+        testthat::expect_error(topcorr(test_df, -1))
 })
 
 # test when k is zero
-test_that("Error is raised for k is zero", {
-        expect_error(topcorr(test_df, 0))
+testthat::test_that("Error is raised for k is zero", {
+        testthat::expect_error(topcorr(test_df, 0))
 })
 
 # test when k is default
-test_that("Check if the output is correct when k is not default", {
+testthat::test_that("Check if the output is correct when k is not default", {
         test_input_1 <- droplevels.data.frame(topcorr(test_df_1))
         attributes(test_input_1)$na.action <- NULL
-        expect_equal(test_input_1, as.data.frame(df_output_1))
+        testthat::expect_equal(test_input_1, as.data.frame(df_output_1))
 })
 
 # test when k is not default
-test_that("Check if the output is correct when k is not default", {
+testthat::test_that("Check if the output is correct when k is not default", {
         test_input <- droplevels.data.frame(topcorr(test_df, 1))
         attributes(test_input)$na.action <- NULL
-        expect_equal(test_input, as.data.frame(df_output))
+        testthat::expect_equal(test_input, as.data.frame(df_output))
 })
 
