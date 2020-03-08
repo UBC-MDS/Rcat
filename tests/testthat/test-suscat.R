@@ -32,12 +32,12 @@ testthat::test_that("Output of wrong type",{
 #testing output
 testthat::test_that("Output unexpectedly wrong",{
         #checking indicies per column
-        testthat::expect_equal(length(suscat(df,c('x')$'x')),2)
+        testthat::expect_equal(length(suscat(df,c('x'))$'x'),2)
         #checking number of columns
         testthat::expect_equal(length(suscat(df,c('x'),n=0)),1)
         # check values of indicies returned
-        testthat::expect_gte(min(suscat(df,c('x')$'x')),0)
-        testthat::expect_lte(max(suscat(df,c('x')$'x')),nrow(df))
+        testthat::expect_gte(min(suscat(df,c('x'))$'x'),0)
+        testthat::expect_lte(max(suscat(df,c('x'))$'x'),nrow(df))
         testthat::expect_equal(suscat(df,c('x','y'))$'x',suscat(df,c('x'))$'x')
 })
 
