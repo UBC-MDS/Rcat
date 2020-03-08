@@ -10,5 +10,19 @@
 #'
 #' @examples
 #' missing(df, 0.2)
-misscat <- function(df, k) {
+misscat <- function(df, threshold) {
+
+        if (!is.data.frame(df)){
+                stop('Every column in your dataframe must be numeric.')
+        }
+
+        if (typeof(threshold) != "double")
+                stop("Threshold must be a number")
+        if(threshold < 0 | threshold > 1)
+                stop("threshold is a ratio between 0 and 1")
+
+        rows <- apply(df, 1, function(x) mean(is.na(x))) < threshold
+        df <- df[rows, ]
+        return(df)
+
 }
