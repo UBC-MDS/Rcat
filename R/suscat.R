@@ -1,6 +1,3 @@
-#library(testthat)
-#library(tidyverse)
-
 #' Detect suspected erroneous numeric data in user chosen columns
 #'
 #' @param df A dataframe or matrix like object
@@ -46,15 +43,11 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   for(i in column){
     #isolate relavent column
     a <- df[[i]]
-    print(a)
     # find upper and lower quantile values
     low <- quantile(a,probs = alpha/2 )
-    print(low)
     high <- quantile(a,probs = 1-alpha/2 )
-    print(high)
     #extract index of rows outside CI and combine
     temp <- c(which(a<low), which(a>high))
-    print(temp)
     # filter unique and sort, add to named list
     output[[i]] <- sort(unique(temp))
   }
