@@ -147,25 +147,25 @@ suscat(df, columns, n = 1, num = ‘percent’)
 **Arguments**
 
   - `df`, the input data frame (data.frame)
-  - `columns`, a list or array of column indices for which to test for
-    suspected erroneous data (list)
+  - `columns`, vector like with names of columns to test (vector)
   - `n`, an integer value for amount of suspected values to return
   - `num`, the optional parameter specifies the whether n is a number of
     rows or percentage
 
 **Returns**
 
-  - a dataframe with key as index of column and values as row indices of
-    suspected erroneous values
+  - list of named vectors containing row numbers per column
 
 **Examples**
 
 ``` r
 library(Rcat)
-suscat(df=iris_df)
+suscat(iris, c("Sepal.Length"))
 ```
 
-The expected output is shown below: Waiting for the 4th function
+The expected output is shown below:
+
+$Sepal.Length \[1\] 9 14 39 43 132
 
 ### 3\. repwithna
 
