@@ -4,18 +4,25 @@
 \alias{repwithna}
 \title{Replacing uninformative strings with NAs}
 \usage{
-repwithna(df)
+repwithna(df, rmvpunc = FALSE, format = NULL)
 }
 \arguments{
 \item{df}{the input data frame}
+
+\item{rmvpunc}{The default value is False. If True, remove all the strings containing only punctuations}
+
+\item{format}{A regular expression representing the format of the string value in the data frame}
 }
 \value{
 data frame
 }
 \description{
-Replaces uninformative strings (eg. empty strings) with NAs
+Replace uninformative strings (eg. empty strings like '') in the data frame with NAs,
 so they can be removed as missing values.
+By default, empty strings will be replaced. If 'rmvpunc' is set to 'True', strings
+containing only punctuations will also be replaced. If 'format' is set with a regular
+expression, the function will replace all the strings of non-compliant formats with NAs.
 }
 \examples{
-repwithna(df)
+repwithna(data.frame("Name" = c("  ", ",.;"), "Age" = c(21,15)), rmvpunc=TRUE)
 }
