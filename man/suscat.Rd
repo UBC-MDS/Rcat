@@ -9,11 +9,11 @@ suscat(df, column = NULL, n = 5, num = "percent")
 \arguments{
 \item{df}{A dataframe or matrix like object}
 
+\item{column}{vector like with names of columns to test}
+
 \item{n}{default to 1, integer number or percentage of suspected values to identify}
 
 \item{num}{either "number" if n should be read as a number of rows or 'percentage' if a percentage of total rows}
-
-\item{col}{vector like with names of columns to test}
 }
 \value{
 list of named vectors containing row numbers per column
@@ -22,6 +22,5 @@ list of named vectors containing row numbers per column
 Detect suspected erroneous numeric data in user chosen columns
 }
 \examples{
-suscat(df, col = c(1,3,5), n = 10)
-suscat(df, col = c(1,5,4,10), n = 2, num = 'number')
+suscat(iris, col = c('Sepal.Width', 'Petal.Width'))
 }

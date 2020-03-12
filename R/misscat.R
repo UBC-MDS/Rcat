@@ -2,14 +2,14 @@
 #'
 #' Drops rows or columns containing missing values if the number of the missing values exceeds a threshold
 #'
-#' @param df the input tibble
+#' @param df the input data frame
 #' @param threshold threshold (ratio of missing values to drop the row or column)
 #'
 #' @return data frame
 #' @export
 #'
 #' @examples
-#' missing(df, 0.2)
+#' misscat(iris, 0.2)
 misscat <- function(df, threshold) {
 
         if (!is.data.frame(df)){
