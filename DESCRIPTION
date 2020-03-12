@@ -16,6 +16,7 @@ Suggests:
     testthat (>= 2.1.0),
     covr
 Imports: 
+    lifecycle,
     dplyr,
     stringr,
     naniar,
