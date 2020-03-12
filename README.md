@@ -12,7 +12,11 @@ Zhang*
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/UBC-MDS/Rcat/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/Rcat/actions)
 <!-- badges: end -->
+
+[![codecov](https://codecov.io/gh/UBC-MDS/Rcat/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/Rcat)
 
 ### Project Overview
 

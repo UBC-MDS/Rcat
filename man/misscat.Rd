@@ -4,12 +4,12 @@
 \alias{misscat}
 \title{Dropping Missing Values}
 \usage{
-misscat(df, k)
+misscat(df, threshold)
 }
 \arguments{
 \item{df}{the input tibble}
 
-\item{k}{threshold (ratio of missing values to drop the row or column)}
+\item{threshold}{threshold (ratio of missing values to drop the row or column)}
 }
 \value{
 data frame
