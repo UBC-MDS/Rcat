@@ -36,13 +36,17 @@ testthat::test_that("Error is raised for k is zero", {
 testthat::test_that("Check if the output is correct when k is default", {
         test_input_1 <- droplevels.data.frame(topcorr(test_df_1))
         attributes(test_input_1)$na.action <- NULL
-        testthat::expect_equivalent(test_input_1, as.data.frame(df_output_1))
+        testthat::expect_equivalent(dim(test_input_1), dim(df_output_1))
+        testthat::expect_equivalent(colnames(test_input_1), colnames(df_output_1))
+        testthat::expect_equivalent(unlist(test_input_1), unlist(df_output_1))
 })
 
 # test when k is not default
 testthat::test_that("Check if the output is correct when k is not default", {
         test_input <- droplevels.data.frame(topcorr(test_df, 1))
         attributes(test_input)$na.action <- NULL
-        testthat::expect_equivalent(test_input, as.data.frame(df_output))
+        testthat::expect_equivalent(dim(test_input), dim(df_output))
+        testthat::expect_equivalent(colnames(test_input), colnames(df_output))
+        testthat::expect_equivalent(unlist(test_input), unlist(df_output))
 })
 
