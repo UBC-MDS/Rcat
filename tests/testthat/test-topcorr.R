@@ -38,7 +38,9 @@ testthat::test_that("Check if the output is correct when k is default", {
         attributes(test_input_1)$na.action <- NULL
         testthat::expect_equivalent(dim(test_input_1), dim(df_output_1))
         testthat::expect_equivalent(colnames(test_input_1), colnames(df_output_1))
-        testthat::expect_equivalent(unlist(test_input_1), unlist(df_output_1))
+        testthat::expect_equivalent(as.character(test_input_1$`Feature 1`), as.character(df_output_1$`Feature 1`))
+        testthat::expect_equivalent(as.character(test_input_1$`Feature 2`), as.character(df_output_1$`Feature 2`))
+        testthat::expect_equivalent(as.double(test_input_1$`Correlation`), as.double(df_output_1$`Correlation`))
 })
 
 # test when k is not default
@@ -47,6 +49,8 @@ testthat::test_that("Check if the output is correct when k is not default", {
         attributes(test_input)$na.action <- NULL
         testthat::expect_equivalent(dim(test_input), dim(df_output))
         testthat::expect_equivalent(colnames(test_input), colnames(df_output))
-        testthat::expect_equivalent(unlist(test_input), unlist(df_output))
+        testthat::expect_equivalent(as.character(test_input$`Feature 1`), as.character(df_output$`Feature 1`))
+        testthat::expect_equivalent(as.character(test_input$`Feature 2`), as.character(df_output$`Feature 2`))
+        testthat::expect_equivalent(as.double(test_input$`Correlation`), as.double(df_output$`Correlation`))
 })
 
