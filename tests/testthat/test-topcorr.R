@@ -1,4 +1,4 @@
-# helper data for testing
+# helper data for tests
 test_df <- data.frame('x' = c(1, 2), 'y' = c(3, 4))
 test_df_1 <- data.frame('x' = c(0.5, 2, 1), 'y' = c(100, 23, 78), 'z' = c(8, 9, 23))
 df_output <- data.frame("Feature 1" = 'y', "Feature 2" = 'x', 'Correlation' = 1, check.names = FALSE)
