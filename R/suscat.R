@@ -1,7 +1,7 @@
 #' Detect suspected erroneous numeric data in user chosen columns
 #'
 #' @param df A dataframe or matrix like object
-#' @param col vector like with names of columns to test
+#' @param column vector like with names of columns to test
 #' @param n default to 1, integer number or percentage of suspected values to identify
 #' @param num either "number" if n should be read as a number of rows or 'percentage' if a percentage of total rows
 #'
@@ -9,8 +9,7 @@
 #' @export
 #'
 #' @examples
-#' suscat(df, col = c(1,3,5), n = 10)
-#' suscat(df, col = c(1,5,4,10), n = 2, num = 'number')
+#' suscat(iris, col = c('Sepal.Width', 'Petal.Width'))
 suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
 
   #testing inputs
@@ -44,8 +43,8 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
     #isolate relavent column
     a <- df[[i]]
     # find upper and lower quantile values
-    low <- quantile(a,probs = alpha/2 )
-    high <- quantile(a,probs = 1-alpha/2 )
+    low <- stats::quantile(a,probs = alpha/2 )
+    high <- stats::quantile(a,probs = 1-alpha/2 )
     #extract index of rows outside CI and combine
     temp <- c(which(a<low), which(a>high))
     # filter unique and sort, add to named list
