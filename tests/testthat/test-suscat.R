@@ -35,7 +35,7 @@ testthat::test_that("Output of wrong type",{
         testthat::expect_type(suscat(df,c('x')),"list")
 })
 
-testthat::test_that("testig percent is working fine",{
+testthat::test_that("testig percent is nt raising an issue",{
         testthat::expect_error(suscat(df,c('x'), n= 2), NA)
 })
 
