@@ -32,10 +32,10 @@ summary(iris)
 - `repwithna()`: replaces uninformative strings with NAs
 - `misscat()`: summarises and deals with missing values
 - `suscat()`: detects suspected erroneous numeric data
-- `topcorr()`: check top-correlated features
+- `topcorr()`: finds top-correlated features
 
 ```{r setup,include = FALSE}
-suppressPackageStartupMessages(library(Rcat))
+library(Rcat)
 iris["Species"] <- data.frame(lapply(iris["Species"], as.character), stringsAsFactors=FALSE)
 ```
 
@@ -71,11 +71,40 @@ You can also decide the pattern for all of the strings by passing a regluar expr
 repwithna(iris_df, format="^[?][a-z]+[?]$")
 ```
 
-### Summarise and deal with missing values `misscat()`
-This function provides a summary of missing values in the dataset and drops rows or columns if the number of the missing values exceeds the input threshold.
+### Deal with missing values using `misscat()`
+Too many NAs can be a problem. This function drops rows or columns if the number of the missing values exceeds the input threshold.
+
+We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
+
+```{r misscat_1}
+misscat(iris_df, 0.5)
+```
 
 ### Detect suspected erroneous numeric data with `suscat()`
 Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.
 
-### Check top-correlated features with `topcorr()`
+
+### Find top-correlated features with `topcorr()`
 This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
+
+So you can use it to find the top 2 correlated features in `iris`:
+
+``` {r topcorr_1}
+topcorr(iris, 2)
+```
+
+## How Rcat fit in the R ecosystem
+There are several existing packages in R that implement similar functionality.
+
+- [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package generates descriptive statistics and visualisations for data frames. A HTML EDA report is also avaliable.
+
+- [DataExplorer](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package can analyze and visualize each variable in a data frame. It also includes common data processing methods for wrangling.
+
+- [inspectdf](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package offers columnwise summary, comparison and visualisation of data frames.
+
+These packages all provide functions reporting missing values and correlations. Only SmartEDA has a function that runs univariate outlier analysis. And to deal with missing values, only DataExplorer has a function to set all missing values to indicated value.
+
+Thus in R ecosystem, there are many well-defined packages with useful functions for EDA, but there is yet no package containing these different EDA methods. With our package, we hope to incorporate these functions to help the users deal with missing values, outliers and correlations with one simplest way when they are exploring the data set.
