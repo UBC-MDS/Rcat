@@ -27,10 +27,10 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   }
 
   if((num == 'percent') && (n > 100)){
-    n <- 100
+    stop('percents should be between 0 and 100')
   }
   if((num == 'number') &&(n > nrow(df))){
-    n <- nrow(df)
+    stop('Cannot return more then nrow(df) suspected outliers')
   }
 
   if(num =='percent'){

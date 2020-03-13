@@ -18,7 +18,9 @@ Suggests:
     knitr,
     rmarkdown
 Imports: 
+    vctrs,
     lifecycle,
+    pillar,
     dplyr,
     stringr,
     naniar,
