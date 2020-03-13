@@ -31,9 +31,8 @@ missing and suspicious values, as well as finding the relevant features.
 
 The following 4 functions are included in our package.
 
-1.  `misscat`: This function provides a summary of missing values in the
-    dataset and drops rows or columns if the number of the missing
-    values exceeds the input threshold.
+1.  `misscat`: This function drops rows or columns if the number of the
+    missing values exceeds the input threshold.
 
 2.  `suscat`: Datasets could include erroneous values such as outliers.
     This function detects suspected erroneous numeric data in
