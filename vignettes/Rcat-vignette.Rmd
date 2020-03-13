@@ -72,7 +72,7 @@ repwithna(iris_df, format="^[?][a-z]+[?]$")
 ```
 
 ### Deal with missing values using `misscat()`
-Too many NAs can be a problem. This function drops rows or columns if the number of the missing values exceeds the input threshold.
+With uninformative strings replaced as NAs in `repwithna()`, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds the input threshold.
 
 We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
 
@@ -86,7 +86,7 @@ Datasets could include erroneous values such as outliers. This function detects 
 
 
 ### Find top-correlated features with `topcorr()`
-This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
+During EDA, we always want to know if there are correlated pairs in the dataset, which might give us insights for the analysis process later. The last function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
 
 For example, you can use it to find the top 2 correlated features in `iris`:
 
