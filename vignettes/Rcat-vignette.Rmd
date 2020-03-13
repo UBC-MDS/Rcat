@@ -1,0 +1,75 @@
+---
+title: "Rcat"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rcat-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+In the early stage of a data science project, Exploratory Data Analysis (EDA) is a crucial stage to perform an initial investigation on the dataset and inspire valuable research questions.
+
+`Rcat` is a package that makes it faster and easier to get start on EDA with a collection of convenient functions. This package simplifies the process of detecting and dealing with missing and suspicious values, as well as finding the relevant features.
+
+This document will introduce you to `Rcat`'s functions and how you can apply them during you EDA process.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Data
+To explore the functions in `Rcat`, we'll use R's dataset `iris`. This dataset contains 150 records and is documented in `?iris`.
+
+```{r data}
+head(iris)
+dim(iris)
+summary(iris)
+```
+
+## Functions in the package
+- `repwithna()`: replaces uninformative strings with NAs
+- `misscat()`: summarises and deals with missing values
+- `suscat()`: detects suspected erroneous numeric data
+- `topcorr()`: check top-correlated features
+
+```{r setup,include = FALSE}
+suppressPackageStartupMessages(library(Rcat))
+iris <- data.frame(lapply(iris, as.character), stringsAsFactors=FALSE)
+```
+
+### Replace uninformative strings with `repwithna()`
+Datasets could include uninformative strings, such as strings with only punctuations or blank strings. This function replaces these strings with NAs so they can be removed as missing values.
+
+As there are no uninformative strings in this dataset, we will use this generated data frame for this example.
+
+```{r repwithna_data}
+iris_df <- head(iris)
+iris_df[1, 1:3] <- NA
+iris_df[3, 5] <- "  "
+iris_df[4, 5] <- "???"
+iris_df[5, 5] <- "?setosa?"
+iris_df
+```
+
+Defaultly, empty strings will be replaced as NA values.
+
+``` {r repwithna_1}
+repwithna(iris_df)
+```
+
+You can set `rmvpunc` argument to be TRUE to also replace strings with only punctuations.
+
+```{r repwithna_2}
+repwithna(iris_df, rmvpunc = TRUE)
+```
+
+### Summarise and deal with missing values `misscat()`
+This function provides a summary of missing values in the dataset and drops rows or columns if the number of the missing values exceeds the input threshold.
+
+### Detect suspected erroneous numeric data with `suscat()`
+Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.
+
+### Check top-correlated features with `topcorr()`
+This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
