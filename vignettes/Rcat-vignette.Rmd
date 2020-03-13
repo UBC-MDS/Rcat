@@ -77,7 +77,8 @@ Too many NAs can be a problem. This function drops rows or columns if the number
 We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
 
 ```{r misscat_1}
-misscat(iris_df, 0.5)
+output <- misscat(iris_df, 0.5)
+output
 ```
 
 ### Detect suspected erroneous numeric data with `suscat()`
@@ -87,10 +88,11 @@ Datasets could include erroneous values such as outliers. This function detects 
 ### Find top-correlated features with `topcorr()`
 This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
 
-So you can use it to find the top 2 correlated features in `iris`:
+For example, you can use it to find the top 2 correlated features in `iris`:
 
 ``` {r topcorr_1}
-topcorr(iris, 2)
+output <- topcorr(iris, 2)
+output
 ```
 
 ## How Rcat fit in the R ecosystem
