@@ -36,7 +36,7 @@ summary(iris)
 
 ```{r setup,include = FALSE}
 suppressPackageStartupMessages(library(Rcat))
-iris <- data.frame(lapply(iris, as.character), stringsAsFactors=FALSE)
+iris["Species"] <- data.frame(lapply(iris["Species"], as.character), stringsAsFactors=FALSE)
 ```
 
 ### Replace uninformative strings with `repwithna()`
@@ -63,6 +63,12 @@ You can set `rmvpunc` argument to be TRUE to also replace strings with only punc
 
 ```{r repwithna_2}
 repwithna(iris_df, rmvpunc = TRUE)
+```
+
+You can also decide the pattern for all of the strings by passing a regluar expression to `format` argument. So all the strings that are not following this pattern will be replaced as NAs.
+
+```{r repwithna_3}
+repwithna(iris_df, format="^[?][a-z]+[?]$")
 ```
 
 ### Summarise and deal with missing values `misscat()`
