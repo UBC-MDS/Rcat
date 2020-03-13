@@ -36,6 +36,7 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   if(num =='percent'){
     alpha <- n/100
   }
+
   output <- list()
   for(i in column){
     #isolate relavent column
