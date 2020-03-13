@@ -17,6 +17,12 @@ testthat::test_that("n should be an integer", {
         testthat::expect_error(suscat(test_df, c('x','y'),n='a'))
         testthat::expect_error(suscat(test_df, c('x','y'),n=0.2))
 })
+testthat::test_that("n should be a number between 1 and 100", {
+        testthat::expect_error(suscat(test_df, c('x','y'),n=200))
+})
+testthat::test_that("n can't be more then the number of rows", {
+        testthat::expect_error(suscat(test_df, c('x','y'),n=10000, num='number'))
+})
 
 # test when num input is wrong
 testthat::test_that("num should be one of the following: 'percent', 'number'", {

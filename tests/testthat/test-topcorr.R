@@ -1,4 +1,4 @@
-# helper data for testing
+# helper data for tests
 test_df <- data.frame('x' = c(1, 2), 'y' = c(3, 4))
 test_df_1 <- data.frame('x' = c(0.5, 2, 1), 'y' = c(100, 23, 78), 'z' = c(8, 9, 23))
 df_output <- data.frame("Feature 1" = 'y', "Feature 2" = 'x', 'Correlation' = 1, check.names = FALSE)
@@ -33,16 +33,24 @@ testthat::test_that("Error is raised for k is zero", {
 })
 
 # test when k is default
-testthat::test_that("Check if the output is correct when k is not default", {
+testthat::test_that("Check if the output is correct when k is default", {
         test_input_1 <- droplevels.data.frame(topcorr(test_df_1))
         attributes(test_input_1)$na.action <- NULL
-        testthat::expect_equal(test_input_1, as.data.frame(df_output_1))
+        testthat::expect_equivalent(dim(test_input_1), dim(df_output_1))
+        testthat::expect_equivalent(colnames(test_input_1), colnames(df_output_1))
+        testthat::expect_equivalent(as.character(test_input_1$`Feature 1`), as.character(df_output_1$`Feature 1`))
+        testthat::expect_equivalent(as.character(test_input_1$`Feature 2`), as.character(df_output_1$`Feature 2`))
+        testthat::expect_equivalent(as.double(test_input_1$`Correlation`), as.double(df_output_1$`Correlation`))
 })
 
 # test when k is not default
 testthat::test_that("Check if the output is correct when k is not default", {
         test_input <- droplevels.data.frame(topcorr(test_df, 1))
         attributes(test_input)$na.action <- NULL
-        testthat::expect_equal(test_input, as.data.frame(df_output))
+        testthat::expect_equivalent(dim(test_input), dim(df_output))
+        testthat::expect_equivalent(colnames(test_input), colnames(df_output))
+        testthat::expect_equivalent(as.character(test_input$`Feature 1`), as.character(df_output$`Feature 1`))
+        testthat::expect_equivalent(as.character(test_input$`Feature 2`), as.character(df_output$`Feature 2`))
+        testthat::expect_equivalent(as.double(test_input$`Correlation`), as.double(df_output$`Correlation`))
 })
 
