@@ -27,6 +27,9 @@ knitr::opts_chunk$set(
 
 [![codecov](https://codecov.io/gh/UBC-MDS/Rcat/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/Rcat)
 
+Package page: https://ubc-mds.github.io/Rcat  
+Package Vigenette: https://ubc-mds.github.io/Rcat/articles/Rcat-vignette.html
+
 ### Project Overview
 `Rcat` is a package that provides a collection of convenient functions for Exploratory Data Analysis (EDA). In the early stage of a data science project, EDA is a crucial stage to perform an initial investigation on the dataset and inspire valuable research questions. This package simplifies the process of detecting and dealing with missing and suspicious values, as well as finding the relevant features. 
 

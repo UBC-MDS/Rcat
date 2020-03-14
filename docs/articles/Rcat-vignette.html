@@ -186,34 +186,46 @@
 <h3 class="hasAnchor">
 <a href="#deal-with-missing-values-using-misscat" class="anchor"></a>Deal with missing values using <code>misscat()</code>
 </h3>
-<p>Too many NAs can be a problem. This function drops rows or columns if the number of the missing values exceeds the input threshold.</p>
+<p>With uninformative strings replaced as NAs in <code><a href="../reference/repwithna.html">repwithna()</a></code>, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds the input threshold.</p>
 <p>We can continue using the example <code>iris_df</code> data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>output &lt;-<span class="st"> </span><span class="kw"><a href="../reference/misscat.html">misscat</a></span>(iris_df, <span class="fl">0.5</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>output</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width  Species</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2   setosa</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2         </span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2      ???</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2 ?setosa?</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4   setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../reference/misscat.html">misscat</a></span>(iris_df, <span class="fl">0.5</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width  Species</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2   setosa</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2         </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2      ???</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2 ?setosa?</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4   setosa</span></span></code></pre></div>
 </div>
 <div id="detect-suspected-erroneous-numeric-data-with-suscat" class="section level3">
 <h3 class="hasAnchor">
 <a href="#detect-suspected-erroneous-numeric-data-with-suscat" class="anchor"></a>Detect suspected erroneous numeric data with <code>suscat()</code>
 </h3>
 <p>Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.</p>
+<p>You can detect suspected erroneous sepal length and width data in <code>iris</code> by percentage. Here we try to find 1% suspicious values. And we will get the row indices of the questionable values for each column.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="../reference/suscat.html">suscat</a></span>(iris, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>), <span class="dt">n=</span><span class="dv">1</span>, <span class="dt">num=</span><span class="st">"percent"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; $Sepal.Length</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; [1]  14 132</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; </span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; $Sepal.Width</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt; [1] 16 61</span></span></code></pre></div>
+<p>You can also detect by specifying the exact number of outliers instead of percentage.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="../reference/suscat.html">suscat</a></span>(iris, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sepal.Length"</span>), <span class="dt">n=</span><span class="dv">2</span>, <span class="dt">num=</span><span class="st">"number"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt; $Sepal.Length</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt; [1]  14 132</span></span></code></pre></div>
 </div>
 <div id="find-top-correlated-features-with-topcorr" class="section level3">
 <h3 class="hasAnchor">
 <a href="#find-top-correlated-features-with-topcorr" class="anchor"></a>Find top-correlated features with <code>topcorr()</code>
 </h3>
-<p>This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.</p>
+<p>During EDA, we always want to know if there are correlated pairs in the dataset, which might give us insights for the analysis process later. The last function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.</p>
 <p>For example, you can use it to find the top 2 correlated features in <code>iris</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>output &lt;-<span class="st"> </span><span class="kw"><a href="../reference/topcorr.html">topcorr</a></span>(iris, <span class="dv">2</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>output</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;      Feature 1    Feature 2 Correlation</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; 1  Petal.Width Petal.Length      0.9629</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; 2 Petal.Length Sepal.Length      0.8718</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw"><a href="../reference/topcorr.html">topcorr</a></span>(iris, <span class="dt">k=</span><span class="dv">5</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;      Feature 1    Feature 2 Correlation</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; 1  Petal.Width Petal.Length      0.9629</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; 2 Petal.Length Sepal.Length      0.8718</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; 3  Petal.Width Sepal.Length      0.8179</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; 4 Petal.Length  Sepal.Width     -0.4284</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 5  Petal.Width  Sepal.Width     -0.3661</span></span></code></pre></div>
 </div>
 </div>
 <div id="how-rcat-fit-in-the-r-ecosystem" class="section level2">

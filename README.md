@@ -18,6 +18,10 @@ status](https://github.com/UBC-MDS/Rcat/workflows/R-CMD-check/badge.svg)](https:
 
 [![codecov](https://codecov.io/gh/UBC-MDS/Rcat/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/Rcat)
 
+Package page: <https://ubc-mds.github.io/Rcat>  
+Package Vigenette:
+<https://ubc-mds.github.io/Rcat/articles/Rcat-vignette.html>
+
 ### Project Overview
 
 `Rcat` is a package that provides a collection of convenient functions

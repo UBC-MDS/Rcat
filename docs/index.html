@@ -88,6 +88,8 @@
 <!-- badges: start -->
 
 <p><a href="https://codecov.io/gh/UBC-MDS/Rcat"><img src="https://codecov.io/gh/UBC-MDS/Rcat/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<p>Package page: <a href="https://ubc-mds.github.io/Rcat" class="uri">https://ubc-mds.github.io/Rcat</a><br>
+Package Vigenette: <a href="https://ubc-mds.github.io/Rcat/articles/Rcat-vignette.html" class="uri">https://ubc-mds.github.io/Rcat/articles/Rcat-vignette.html</a></p>
 <div id="project-overview" class="section level3">
 <h3 class="hasAnchor">
 <a href="#project-overview" class="anchor"></a>Project Overview</h3>
@@ -122,21 +124,19 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of Rcat from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"Rcat"</span>)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"UBC-MDS/Rcat"</span>)</span></code></pre></div>
+<p>You can install the development version of Rcat from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"UBC-MDS/Rcat"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The examples used below are based on <code>iris</code> from R’s build in datasets. For demo purpose, we will insert some missing and erroneous values into this dataset.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>iris_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(iris, <span class="dv">5</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>iris_df[<span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>iris_df[<span class="dv">5</span>, <span class="dv">2</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(iris_df<span class="op">$</span>Species) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(iris_df<span class="op">$</span>Species), <span class="st">""</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>iris_df[<span class="dv">3</span>, <span class="dv">5</span>] &lt;-<span class="st"> ""</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>iris_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(iris, <span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>iris_df[<span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>iris_df[<span class="dv">5</span>, <span class="dv">2</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(iris_df<span class="op">$</span>Species) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(iris_df<span class="op">$</span>Species), <span class="st">""</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>iris_df[<span class="dv">3</span>, <span class="dv">5</span>] &lt;-<span class="st"> ""</span></span></code></pre></div>
 <p>The example dataframe is shown below:</p>
 <table class="table">
 <thead><tr class="header">
@@ -199,8 +199,8 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <li>a dataframe after dropping rows (data.frame)</li>
 </ul>
 <p><strong>Examples</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="reference/misscat.html">misscat</a></span>(<span class="dt">df=</span>iris_df, <span class="dt">threshold=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="reference/misscat.html">misscat</a></span>(<span class="dt">df=</span>iris_df, <span class="dt">threshold=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p>The expected output is shown below:</p>
 <table class="table">
 <thead><tr class="header">
@@ -262,8 +262,8 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <li>list of named vectors containing row numbers per column</li>
 </ul>
 <p><strong>Examples</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw"><a href="reference/suscat.html">suscat</a></span>(iris, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sepal.Length"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="reference/suscat.html">suscat</a></span>(iris, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sepal.Length"</span>))</span></code></pre></div>
 <p>The expected output is shown below:</p>
 <p>$Sepal.Length [1] 9 14 39 43 132</p>
 </div>
@@ -280,8 +280,8 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <li>a dataframe after replacing uninformative string with NA (data.frame)</li>
 </ul>
 <p><strong>Examples</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw"><a href="reference/repwithna.html">repwithna</a></span>(<span class="dt">df=</span>iris_df)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw"><a href="reference/repwithna.html">repwithna</a></span>(<span class="dt">df=</span>iris_df)</span></code></pre></div>
 <p>The expected output is shown below:</p>
 <table class="table">
 <thead><tr class="header">
@@ -345,8 +345,8 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <li>a sorted correlation data frame with top k correlated feature pairs (data.frame)</li>
 </ul>
 <p><strong>Examples</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw"><a href="reference/topcorr.html">topcorr</a></span>(<span class="dt">df=</span>iris, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw"><a href="reference/topcorr.html">topcorr</a></span>(<span class="dt">df=</span>iris, <span class="dv">2</span>)</span></code></pre></div>
 <p><em>Note: Some columns in iris_df have zero standard deviation. We will use the full iris dataset for demostration.</em></p>
 <p>The expected output is shown below:</p>
 <table class="table">
