@@ -39,7 +39,6 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
     alpha <- (n + 1) / (dim(df) + 1)
   }
 
-
   output <- list()
   for(i in column){
     #isolate relavent column
