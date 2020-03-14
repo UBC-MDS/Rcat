@@ -14,7 +14,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
 Suggests: 
     testthat (>= 2.1.0),
-    covr
+    covr,
+    knitr,
+    rmarkdown
 Imports: 
     vctrs,
     lifecycle,
@@ -25,3 +27,4 @@ Imports:
     reshape
 URL: https://github.com/UBC-MDS/Rcat
 BugReports: https://github.com/UBC-MDS/Rcat/issues
+VignetteBuilder: knitr
