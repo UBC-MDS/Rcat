@@ -1,0 +1,112 @@
+---
+title: "Rcat"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rcat-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+In the early stage of a data science project, Exploratory Data Analysis (EDA) is a crucial stage to perform an initial investigation on the dataset and inspire valuable research questions.
+
+`Rcat` is a package that makes it faster and easier to get start on EDA with a collection of convenient functions. This package simplifies the process of detecting and dealing with missing and suspicious values, as well as finding the relevant features.
+
+This document will introduce you to `Rcat`'s functions and how you can apply them during you EDA process.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Data
+To explore the functions in `Rcat`, we'll use R's dataset `iris`. This dataset contains 150 records and is documented in `?iris`.
+
+```{r data}
+head(iris)
+dim(iris)
+summary(iris)
+```
+
+## Functions in the package
+- `repwithna()`: replaces uninformative strings with NAs
+- `misscat()`: summarises and deals with missing values
+- `suscat()`: detects suspected erroneous numeric data
+- `topcorr()`: finds top-correlated features
+
+```{r setup,include = FALSE}
+library(Rcat)
+iris["Species"] <- data.frame(lapply(iris["Species"], as.character), stringsAsFactors=FALSE)
+```
+
+### Replace uninformative strings with `repwithna()`
+Datasets could include uninformative strings, such as strings with only punctuations or blank strings. This function replaces these strings with NAs so they can be removed as missing values.
+
+As there are no uninformative strings in this dataset, we will use this generated data frame for this example.
+
+```{r repwithna_data}
+iris_df <- head(iris)
+iris_df[1, 1:3] <- NA
+iris_df[3, 5] <- "  "
+iris_df[4, 5] <- "???"
+iris_df[5, 5] <- "?setosa?"
+iris_df
+```
+
+Defaultly, empty strings will be replaced as NA values.
+
+``` {r repwithna_1}
+repwithna(iris_df)
+```
+
+You can set `rmvpunc` argument to be TRUE to also replace strings with only punctuations.
+
+```{r repwithna_2}
+repwithna(iris_df, rmvpunc = TRUE)
+```
+
+You can also decide the pattern for all of the strings by passing a regluar expression to `format` argument. So all the strings that are not following this pattern will be replaced as NAs.
+
+```{r repwithna_3}
+repwithna(iris_df, format="^[?][a-z]+[?]$")
+```
+
+### Deal with missing values using `misscat()`
+With uninformative strings replaced as NAs in `repwithna()`, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds the input threshold.
+
+We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
+
+```{r misscat_1}
+output <- misscat(iris_df, 0.5)
+output
+```
+
+### Detect suspected erroneous numeric data with `suscat()`
+Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.
+
+
+### Find top-correlated features with `topcorr()`
+During EDA, we always want to know if there are correlated pairs in the dataset, which might give us insights for the analysis process later. The last function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
+
+For example, you can use it to find the top 2 correlated features in `iris`:
+
+``` {r topcorr_1}
+output <- topcorr(iris, 2)
+output
+```
+
+## How Rcat fit in the R ecosystem
+There are several existing packages in R that implement similar functionality.
+
+- [SmartEDA](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package generates descriptive statistics and visualisations for data frames. A HTML EDA report is also avaliable.
+
+- [DataExplorer](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package can analyze and visualize each variable in a data frame. It also includes common data processing methods for wrangling.
+
+- [inspectdf](https://cran.r-project.org/web/packages/SmartEDA/index.html)
+This package offers columnwise summary, comparison and visualisation of data frames.
+
+These packages all provide functions reporting missing values and correlations. Only SmartEDA has a function that runs univariate outlier analysis. And to deal with missing values, only DataExplorer has a function to set all missing values to indicated value.
+
+Thus in R ecosystem, there are many well-defined packages with useful functions for EDA, but there is yet no package containing these different EDA methods. With our package, we hope to incorporate these functions to help the users deal with missing values, outliers and correlations with one simplest way when they are exploring the data set.
