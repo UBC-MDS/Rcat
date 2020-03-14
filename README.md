@@ -31,9 +31,8 @@ missing and suspicious values, as well as finding the relevant features.
 
 The following 4 functions are included in our package.
 
-1.  `misscat`: This function provides a summary of missing values in the
-    dataset and drops rows or columns if the number of the missing
-    values exceeds the input threshold.
+1.  `misscat`: This function drops rows or columns if the number of the
+    missing values exceeds the input threshold.
 
 2.  `suscat`: Datasets could include erroneous values such as outliers.
     This function detects suspected erroneous numeric data in
@@ -79,14 +78,8 @@ correlations with one simplest way when they are exploring the data set.
 
 ## Installation
 
-You can install the released version of Rcat from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("Rcat")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of Rcat from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

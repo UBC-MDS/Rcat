@@ -37,9 +37,11 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   }
   if(num =='percent'){
     alpha <- n/100
+
   } else if (num == 'number'){
     alpha <- (n+1)/(nrow(df)+1)
   }
+
   output <- list()
   for(i in column){
     #isolate relavent column
