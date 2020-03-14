@@ -19,8 +19,8 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   if(!is.character(column)){
       stop('column should be a vector of column names')
   }
-  if(is.numeric(n)){
-      stop('n should be an integer')
+  if(!is.numeric(n)){
+      stop('n should be an numeric')
   }
   if(!(num %in% c("number",'percent'))){
     stop('num should have one of the following values: "number","percent"')
