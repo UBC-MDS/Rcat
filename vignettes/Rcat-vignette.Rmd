@@ -77,13 +77,23 @@ With uninformative strings replaced as NAs in `repwithna()`, we can now deal wit
 We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
 
 ```{r misscat_1}
-output <- misscat(iris_df, 0.5)
-output
+misscat(iris_df, 0.5)
 ```
 
 ### Detect suspected erroneous numeric data with `suscat()`
 Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.
 
+You can detect suspected erroneous sepal length and width data in `iris` by percentage. Here we try to find 1% suspicious values. And we will get the row indices of the questionable values for each column.
+
+```{r suscat}
+suscat(iris, c("Sepal.Length", "Sepal.Width"), n=1, num="percent")
+```
+
+You can also detect by specifying the exact number of outliers instead of percentage.
+
+```{r suscat_2}
+suscat(iris, c("Sepal.Length"), n=2, num="number")
+```
 
 ### Find top-correlated features with `topcorr()`
 During EDA, we always want to know if there are correlated pairs in the dataset, which might give us insights for the analysis process later. The last function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.
@@ -91,8 +101,7 @@ During EDA, we always want to know if there are correlated pairs in the dataset,
 For example, you can use it to find the top 2 correlated features in `iris`:
 
 ``` {r topcorr_1}
-output <- topcorr(iris, 2)
-output
+topcorr(iris, k=5)
 ```
 
 ## How Rcat fit in the R ecosystem
