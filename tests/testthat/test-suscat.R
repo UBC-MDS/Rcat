@@ -13,15 +13,17 @@ testthat::test_that("Error is raised for incorrect column type", {
 })
 
 # test when n is of wrong type
-testthat::test_that("n should be an integer", {
-        testthat::expect_error(suscat(test_df, c('x','y'),n='a'))
-        testthat::expect_error(suscat(test_df, c('x','y'),n=0.2))
+testthat::test_that("n should be an numeric", {
+        testthat::expect_error(suscat(df, c('x','y'),n='a'))
 })
 testthat::test_that("n should be a number between 1 and 100", {
-        testthat::expect_error(suscat(test_df, c('x','y'),n=200))
+        testthat::expect_error(suscat(df, c('x','y'),n=200))
 })
 testthat::test_that("n can't be more then the number of rows", {
-        testthat::expect_error(suscat(test_df, c('x','y'),n=10000, num='number'))
+        testthat::expect_error(suscat(df, c('x','y'),n=10000, num='number'))
+})
+testthat::test_that("number of rows must be an integer", {
+        testthat::expect_error(suscat(df, c('x','y'),n=1.5, num='number'))
 })
 
 # test when num input is wrong
