@@ -19,24 +19,26 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   if(!is.character(column)){
       stop('column should be a vector of column names')
   }
-  if(is.integer(n)){
+  if(is.numeric(n)){
       stop('n should be an integer')
   }
   if(!(num %in% c("number",'percent'))){
     stop('num should have one of the following values: "number","percent"')
-  }
 
+  }
   if((num == 'percent') && (n > 100)){
     stop('percents should be between 0 and 100')
   }
   if((num == 'number') &&(n > nrow(df))){
     stop('Cannot return more then nrow(df) suspected outliers')
   }
-
+  if((num == 'number') &&(n%%1!=0)){
+    stop('Number of rows must be an integer')
+  }
   if(num =='percent'){
     alpha <- n/100
   } else if (num == 'number'){
-
+    alpha <- (n+1)/(nrow(df)+1)
   }
   output <- list()
   for(i in column){
@@ -50,9 +52,5 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
     # filter unique and sort, add to named list
     output[[i]] <- sort(unique(temp))
   }
-
-
-
-
   return(output)
 }
