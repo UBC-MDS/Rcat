@@ -78,14 +78,8 @@ correlations with one simplest way when they are exploring the data set.
 
 ## Installation
 
-You can install the released version of Rcat from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("Rcat")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of Rcat from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
