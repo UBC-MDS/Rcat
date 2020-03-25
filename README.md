@@ -206,8 +206,8 @@ The expected output is shown below:
 
 **Returns**
 
-  - a sorted correlation data frame with top k correlated feature pairs
-    (data.frame)
+  - a sorted pearson correlation data frame with top k correlated
+    feature pairs (data.frame)
 
 **Examples**
 
