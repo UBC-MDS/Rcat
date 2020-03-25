@@ -1,6 +1,6 @@
 #' Top correlated features
 #'
-#' Generates a data frame with the top k correlated pairs of features
+#' Generates a data frame with the top k correlated pairs of features using pearson correlation
 #'
 #' @param df data.frame, the input data frame
 #' @param k numeric or character, default at "all", the number of feature pairs to return
@@ -45,6 +45,7 @@ topcorr <- function(df, k='all') {
         cmatrix[upper.tri(cmatrix, diag=TRUE)] <- NA
         cmatrix_melt <- reshape::melt(cmatrix)
         c_df <- stats::na.omit(cmatrix_melt)
+        c_df$value <- abs(c_df$value)
 
         # sort by absolute values
         c_df_sort <- c_df[order(-abs(c_df$value)),]
@@ -53,7 +54,7 @@ topcorr <- function(df, k='all') {
         rownames(c_df_sort) <- NULL
         names(c_df_sort)[1] <- "Feature 1"
         names(c_df_sort)[2] <- "Feature 2"
-        names(c_df_sort)[3] <- "Correlation"
+        names(c_df_sort)[3] <- "Aboslute Correlation"
 
         if (k == 'all') {
                 return(c_df_sort)

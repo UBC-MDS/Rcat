@@ -15,7 +15,7 @@ topcorr(df, k = "all")
 data.frame, the sorted correlation data frame
 }
 \description{
-Generates a data frame with the top k correlated pairs of features
+Generates a data frame with the top k correlated pairs of features using pearson correlation
 }
 \examples{
 topcorr(iris, 1)
