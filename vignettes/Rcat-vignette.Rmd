@@ -40,7 +40,7 @@ iris["Species"] <- data.frame(lapply(iris["Species"], as.character), stringsAsFa
 ```
 
 ### Replace uninformative strings with `repwithna()`
-Datasets could include uninformative strings, such as strings with only punctuations or blank strings. This function replaces these strings with NAs so they can be removed as missing values.
+Datasets could include uninformative strings, such as strings with only symbols or blank strings. This function replaces these strings with NAs so they can be removed as missing values.
 
 As there are no uninformative strings in this dataset, we will use this generated data frame for this example.
 
@@ -59,10 +59,10 @@ Defaultly, empty strings will be replaced as NA values.
 repwithna(iris_df)
 ```
 
-You can set `rmvpunc` argument to be TRUE to also replace strings with only punctuations.
+You can set `rmvsym` argument to be TRUE to also replace strings with only symbols.
 
 ```{r repwithna_2}
-repwithna(iris_df, rmvpunc = TRUE)
+repwithna(iris_df, rmvsym = TRUE)
 ```
 
 You can also decide the pattern for all of the strings by passing a regluar expression to `format` argument. So all the strings that are not following this pattern will be replaced as NAs.

@@ -102,7 +102,7 @@ Package Vigenette: <a href="https://ubc-mds.github.io/Rcat/articles/Rcat-vignett
 <ol>
 <li><p><code>misscat</code>: This function drops rows or columns if the number of the missing values exceeds the input threshold.</p></li>
 <li><p><code>suscat</code>: Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.</p></li>
-<li><p><code>repwithna</code>: Datasets could include uninformative strings, such as strings with only punctuations or blank strings. This function replaces these strings with <code>NA</code> so they can be removed as missing values.</p></li>
+<li><p><code>repwithna</code>: Datasets could include uninformative strings, such as strings with only symbols or blank strings. This function replaces these strings with <code>NA</code> so they can be removed as missing values.</p></li>
 <li><p><code>topcorr</code>: This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.</p></li>
 </ol>
 </div>
@@ -274,6 +274,10 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <ul>
 <li>
 <code>df</code>, the input data frame (data.frame)</li>
+<li>
+<code>rmvsym</code>, boolean value (default is FALSE), if TRUE, strings with only symbols in the data frame will be replaced as NA</li>
+<li>
+<code>format</code>, A regular expression representing the format of the string value in the data frame</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
