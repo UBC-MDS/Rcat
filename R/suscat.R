@@ -15,12 +15,8 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
   # test inputs in helper function
   suscat_input_test(df = df, column = column, n = n, num = num)
 
-  if(num =='percent'){
-    alpha <- n/100
-
-  } else if (num == 'number'){
-    alpha <- (n+1)/(nrow(df)+1)
-  }
+  # defining alpha based on designation of num type
+  alpha <- ((n+1)/(nrow(df)+1))*(num == 'number') + (n/100)*(num == 'percent')
 
   output <- list()
   for(i in column){
