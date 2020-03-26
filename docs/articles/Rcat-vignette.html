@@ -139,7 +139,7 @@
 <h3 class="hasAnchor">
 <a href="#replace-uninformative-strings-with-repwithna" class="anchor"></a>Replace uninformative strings with <code>repwithna()</code>
 </h3>
-<p>Datasets could include uninformative strings, such as strings with only punctuations or blank strings. This function replaces these strings with NAs so they can be removed as missing values.</p>
+<p>Datasets could include uninformative strings, such as strings with only symbols or blank strings. This function replaces these strings with NAs so they can be removed as missing values.</p>
 <p>As there are no uninformative strings in this dataset, we will use this generated data frame for this example.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>iris_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(iris)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>iris_df[<span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
@@ -163,8 +163,8 @@
 <span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2      ???</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2 ?setosa?</span></span>
 <span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4   setosa</span></span></code></pre></div>
-<p>You can set <code>rmvpunc</code> argument to be TRUE to also replace strings with only punctuations.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="../reference/repwithna.html">repwithna</a></span>(iris_df, <span class="dt">rmvpunc =</span> <span class="ot">TRUE</span>)</span>
+<p>You can set <code>rmvsym</code> argument to be TRUE to also replace strings with only symbols.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="../reference/repwithna.html">repwithna</a></span>(iris_df, <span class="dt">rmvsym =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width  Species</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; 1           NA          NA           NA         0.2   setosa</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2   setosa</span></span>
