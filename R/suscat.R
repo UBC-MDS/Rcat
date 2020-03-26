@@ -12,35 +12,11 @@
 #' suscat(iris, col = c('Sepal.Width', 'Petal.Width'))
 suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
 
-  #testing inputs
-  if (!is.data.frame(df)){
-      stop('df should be Dataframe object')
-  }
-  if(!is.character(column)){
-      stop('column should be a vector of column names')
-  }
-  if(!is.numeric(n)){
-      stop('n should be an numeric')
-  }
-  if(!(num %in% c("number",'percent'))){
-    stop('num should have one of the following values: "number","percent"')
+  # test inputs in helper function
+  suscat_input_test(df = df, column = column, n = n, num = num)
 
-  }
-  if((num == 'percent') && (n > 100)){
-    stop('percents should be between 0 and 100')
-  }
-  if((num == 'number') &&(n > nrow(df))){
-    stop('Cannot return more then nrow(df) suspected outliers')
-  }
-  if((num == 'number') &&(n%%1!=0)){
-    stop('Number of rows must be an integer')
-  }
-  if(num =='percent'){
-    alpha <- n/100
-
-  } else if (num == 'number'){
-    alpha <- (n+1)/(nrow(df)+1)
-  }
+  # defining alpha based on designation of num type
+  alpha <- ((n+1)/(nrow(df)+1))*(num == 'number') + (n/100)*(num == 'percent')
 
   output <- list()
   for(i in column){
@@ -55,4 +31,37 @@ suscat  <- function(df, column = NULL, n = 5, num = 'percent'){
     output[[i]] <- sort(unique(temp))
   }
   return(output)
+}
+
+
+#' Test suscat inputs suspected erroneous numeric data in user chosen columns
+#' @noRd
+#'
+suscat_input_test  <- function(df, column = NULL, n = 5, num = 'percent'){
+  #test df type
+  if (!is.data.frame(df)){
+    stop('df should be Dataframe object')
+  }
+  # test vector type of column
+  if(!is.character(column)){
+    stop('column should be a vector of column names')
+  }
+  # test type of n
+  if(!is.numeric(n)){
+    stop('n should be an numeric')
+  }
+  # test num value
+  if(!(num %in% c("number",'percent'))){
+    stop('num should have one of the following values: "number","percent"')
+  }
+  # test num and n interaction
+  if((num == 'percent') && (n > 100)){
+    stop('percents should be between 0 and 100')
+  }
+  if((num == 'number') &&(n > nrow(df))){
+    stop('Cannot return more then nrow(df) suspected outliers')
+  }
+  if((num == 'number') &&(n%%1!=0)){
+    stop('Number of rows must be an integer')
+  }
 }
