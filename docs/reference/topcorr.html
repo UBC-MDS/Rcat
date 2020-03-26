@@ -36,7 +36,7 @@
 
 
 <meta property="og:title" content="Top correlated features — topcorr" />
-<meta property="og:description" content="Generates a data frame with the top k correlated pairs of features" />
+<meta property="og:description" content="Generates a data frame with the top k correlated pairs of features using pearson correlation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,7 +123,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Generates a data frame with the top k correlated pairs of features</p>
+    <p>Generates a data frame with the top k correlated pairs of features using pearson correlation</p>
     </div>
 
     <pre class="usage"><span class='fu'>topcorr</span>(<span class='no'>df</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</pre>
@@ -146,8 +146,8 @@
     <p>data.frame, the sorted correlation data frame</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>topcorr</span>(<span class='no'>iris</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt;     Feature 1    Feature 2 Correlation
-#&gt; 1 Petal.Width Petal.Length      0.9629</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>topcorr</span>(<span class='no'>iris</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt;     Feature 1    Feature 2 Aboslute Correlation
+#&gt; 1 Petal.Width Petal.Length               0.9629</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

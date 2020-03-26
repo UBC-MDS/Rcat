@@ -100,9 +100,9 @@ Package Vigenette: <a href="https://ubc-mds.github.io/Rcat/articles/Rcat-vignett
 <a href="#functions" class="anchor"></a>Functions</h3>
 <p>The following 4 functions are included in our package.</p>
 <ol>
-<li><p><code>misscat</code>: This function drops rows or columns if the number of the missing values exceeds the input threshold.</p></li>
+<li><p><code>misscat</code>: This function drops the rows which has missing values that exceeded the minimum missing values threshold.</p></li>
 <li><p><code>suscat</code>: Datasets could include erroneous values such as outliers. This function detects suspected erroneous numeric data in user-chosen columns.</p></li>
-<li><p><code>repwithna</code>: Datasets could include uninformative strings, such as strings with only symbols or blank strings. This function replaces these strings with <code>NA</code> so they can be removed as missing values.</p></li>
+<li><p><code>repwithna</code>: Datasets could include uninformative strings, such as strings with only symbols or blank strings. This function replaces these strings with <code>NA</code>s.</p></li>
 <li><p><code>topcorr</code>: This function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.</p></li>
 </ol>
 </div>
@@ -192,7 +192,7 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <li>
 <code>df</code>, the input data frame (data.frame)</li>
 <li>
-<code>threshold</code>, ratio of missing values to drop the row (numeric)</li>
+<code>threshold</code>, ratio of minimum missing values to drop the row (numeric)</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
@@ -346,7 +346,7 @@ This package offers columnwise summary, comparison and visualisation of data fra
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li>a sorted correlation data frame with top k correlated feature pairs (data.frame)</li>
+<li>a sorted pearson correlation data frame with top k correlated feature pairs (data.frame)</li>
 </ul>
 <p><strong>Examples</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Rcat)</span>
@@ -357,7 +357,7 @@ This package offers columnwise summary, comparison and visualisation of data fra
 <thead><tr class="header">
 <th>Feature 1</th>
 <th>Feature 2</th>
-<th>Correlation</th>
+<th>Absolute Correlation</th>
 </tr></thead>
 <tbody>
 <tr class="odd">

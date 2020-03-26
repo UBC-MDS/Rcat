@@ -186,7 +186,7 @@
 <h3 class="hasAnchor">
 <a href="#deal-with-missing-values-using-misscat" class="anchor"></a>Deal with missing values using <code>misscat()</code>
 </h3>
-<p>With uninformative strings replaced as NAs in <code><a href="../reference/repwithna.html">repwithna()</a></code>, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds the input threshold.</p>
+<p>With uninformative strings replaced as NAs in <code><a href="../reference/repwithna.html">repwithna()</a></code>, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds minimum missing values threshold.</p>
 <p>We can continue using the example <code>iris_df</code> data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../reference/misscat.html">misscat</a></span>(iris_df, <span class="fl">0.5</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width  Species</span></span>
@@ -220,12 +220,12 @@
 <p>During EDA, we always want to know if there are correlated pairs in the dataset, which might give us insights for the analysis process later. The last function calculates the correlation between the columns and generates a list of top-correlated features in the dataset.</p>
 <p>For example, you can use it to find the top 2 correlated features in <code>iris</code>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw"><a href="../reference/topcorr.html">topcorr</a></span>(iris, <span class="dt">k=</span><span class="dv">5</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;      Feature 1    Feature 2 Correlation</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; 1  Petal.Width Petal.Length      0.9629</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; 2 Petal.Length Sepal.Length      0.8718</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; 3  Petal.Width Sepal.Length      0.8179</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; 4 Petal.Length  Sepal.Width     -0.4284</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 5  Petal.Width  Sepal.Width     -0.3661</span></span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;      Feature 1    Feature 2 Aboslute Correlation</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; 1  Petal.Width Petal.Length               0.9629</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; 2 Petal.Length Sepal.Length               0.8718</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; 3  Petal.Width Sepal.Length               0.8179</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; 4 Petal.Length  Sepal.Width               0.4284</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 5  Petal.Width  Sepal.Width               0.3661</span></span></code></pre></div>
 </div>
 </div>
 <div id="how-rcat-fit-in-the-r-ecosystem" class="section level2">
