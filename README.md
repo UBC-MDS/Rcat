@@ -35,8 +35,7 @@ missing and suspicious values, as well as finding the relevant features.
 
 The following 4 functions are included in our package.
 
-1.  `misscat`: This function drops rows or columns if the number of the
-    missing values exceeds the input threshold.
+1.  `misscat`: This function drops the rows which has missing values that exceeded the minimum missing values threshold
 
 2.  `suscat`: Datasets could include erroneous values such as outliers.
     This function detects suspected erroneous numeric data in
@@ -119,7 +118,7 @@ The example dataframe is shown below:
 **Arguments**
 
   - `df`, the input data frame (data.frame)
-  - `threshold`, ratio of missing values to drop the row (numeric)
+  - `threshold`, ratio of minimum missing values to drop the row (numeric)
 
 **Returns**
 

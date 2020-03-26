@@ -3,7 +3,7 @@
 #' Drops rows or columns containing missing values if the number of the missing values exceeds a threshold
 #'
 #' @param df the input data frame
-#' @param threshold threshold (ratio of missing values to drop the row or column)
+#' @param threshold threshold (the minimum missing values proportion needed to drop the row.
 #'
 #' @return data frame
 #' @export
