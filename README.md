@@ -44,7 +44,7 @@ The following 4 functions are included in our package.
 
 3.  `repwithna`: Datasets could include uninformative strings, such as
     strings with only symbols or blank strings. This function replaces
-    these strings with `NA` so they can be removed as missing values.
+    these strings with `NA`s.
 
 4.  `topcorr`: This function calculates the correlation between the
     columns and generates a list of top-correlated features in the
