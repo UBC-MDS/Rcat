@@ -206,8 +206,8 @@ The expected output is shown below:
 
 **Returns**
 
-  - a sorted correlation data frame with top k correlated feature pairs
-    (data.frame)
+  - a sorted pearson correlation data frame with top k correlated
+    feature pairs (data.frame)
 
 **Examples**
 
@@ -221,7 +221,7 @@ use the full iris dataset for demostration.*
 
 The expected output is shown below:
 
-| Feature 1    | Feature 2    | Correlation |
-| ------------ | ------------ | ----------- |
-| Petal.Width  | Petal.Length | 0.9629      |
-| Petal.Length | Sepal.Length | 0.8718      |
+| Feature 1    | Feature 2    | Absolute Correlation |
+| ------------ | ------------ | -------------------- |
+| Petal.Width  | Petal.Length | 0.9629               |
+| Petal.Length | Sepal.Length | 0.8718               |

@@ -1,10 +1,10 @@
 # helper data for tests
 test_df <- data.frame('x' = c(1, 2), 'y' = c(3, 4))
 test_df_1 <- data.frame('x' = c(0.5, 2, 1), 'y' = c(100, 23, 78), 'z' = c(8, 9, 23))
-df_output <- data.frame("Feature 1" = 'y', "Feature 2" = 'x', 'Correlation' = 1, check.names = FALSE)
+df_output <- data.frame("Feature 1" = 'y', "Feature 2" = 'x', 'Aboslute Correlation' = 1, check.names = FALSE)
 df_output_1 <- data.frame("Feature 1" = c('y', 'z', 'z'),
                           "Feature 2" = c('x', 'y', 'x'),
-                          'Correlation' = c(-0.9986, 0.1819, -0.1301),
+                          'Aboslute Correlation' = c(0.9986, 0.1819, 0.1301),
                           check.names = FALSE)
 
 # test incorrect dataframe type

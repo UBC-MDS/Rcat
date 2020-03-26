@@ -179,7 +179,7 @@ The expected output is shown below:
 
 **Returns**
 
-- a sorted correlation data frame with top k correlated feature pairs (data.frame)
+- a sorted pearson correlation data frame with top k correlated feature pairs (data.frame)
 
 **Examples**
 
@@ -192,7 +192,7 @@ topcorr(df=iris, 2)
 
 The expected output is shown below:
 
-|Feature 1|Feature 2|Correlation|
+|Feature 1|Feature 2|Absolute Correlation|
 |---|---|---|
 |Petal.Width|Petal.Length|0.9629|
 |Petal.Length|Sepal.Length|0.8718|
