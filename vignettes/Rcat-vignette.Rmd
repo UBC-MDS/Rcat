@@ -72,7 +72,7 @@ repwithna(iris_df, format="^[?][a-z]+[?]$")
 ```
 
 ### Deal with missing values using `misscat()`
-With uninformative strings replaced as NAs in `repwithna()`, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds the input threshold.
+With uninformative strings replaced as NAs in `repwithna()`, we can now deal with these missing values together. This function drops rows or columns if the number of the missing values exceeds minimum missing values threshold.
 
 We can continue using the example `iris_df` data frame above, as it contains NAs. We can set a threshold to drop the row that contains more NAs than the threshold requires.
 
